@@ -1,34 +1,36 @@
-import express from "express"
-import cors from "cors"
-import { connectDB } from "./config/db.js"
-import pcItemRouter from "./routes/pcItemRoute.js"
-import userRouter from "./routes/userRoute.js"
-import 'dotenv/config'
-import cartRouter from "./routes/cartRoute.js"
-import orderRouter from "./routes/orderRoute.js"
+import express from "express";
+import cors from "cors";
+import { connectDB } from "./config/db.js";
+import pcItemRouter from "./routes/pcItemRoute.js";
+import userRouter from "./routes/userRoute.js";
+import "dotenv/config";
+import cartRouter from "./routes/cartRoute.js";
+import orderRouter from "./routes/orderRoute.js";
 
-// app config
-const app = express()
-const port = 4000
+// App config
+const app = express();
+const port = 4000;
 
-// middleware
-app.use(express.json())
-app.use(cors())
+// Middleware
+app.use(express.json());
+app.use(cors());
 
-// db connection
+// Db connection
 connectDB();
 
-// api endpoints
-app.use("/api/pcItem", pcItemRouter)
-app.use("/images", express.static('uploads'))
-app.use("/api/user", userRouter)
-app.use("/api/cart", cartRouter)
-app.use("/api/order", orderRouter)
+// Api endpoints
+app.use("/api/pcItem", pcItemRouter);
+app.use("/images", express.static("uploads"));
+app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/order", orderRouter);
 
+// Testing api
 app.get("/", (req, res) => {
-    res.send("API Working")
-})
+  res.send("API Working");
+});
 
-app.listen(port, ()=>{
-    console.log(`Server Started on http://localhost:${port}`)
-})
+// Connected to the server
+app.listen(port, () => {
+  console.log(`Server Started on http://localhost:${port}`);
+});

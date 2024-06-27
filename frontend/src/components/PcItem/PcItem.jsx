@@ -1,24 +1,39 @@
-import React, { useContext } from 'react'
-import './PcItem.css'
-import { assets } from '../../assets/assets'
-import { StoreContext } from '../../context/StoreContext';
+import { useContext } from "react";
+import "./PcItem.css";
+import { assets } from "../../assets/assets";
+import { StoreContext } from "../../context/StoreContext";
 
-const PcItem = ({id, name, description, price, image}) => {
-
-  const {cartItems, addToCart, removeFromCart,url} = useContext(StoreContext);
+const PcItem = ({ id, name, description, price, image }) => {
+  const { cartItems, addToCart, removeFromCart, url } =
+    useContext(StoreContext);
 
   return (
-    <div className='pc-item'>
+    <div className="pc-item">
+      {/* Pc item display */}
       <div className="pc-item-img-container">
-        <img className='pc-item-image' src={url+"/images/"+image} alt="" />
-        {!cartItems[id]
-          ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white} alt="" />
-          :<div className="pc-item-counter">
-            <img onClick={()=>removeFromCart(id)} src={assets.remove_icon_red} alt="" />
+        <img className="pc-item-image" src={url + "/images/" + image} alt="" />
+        {!cartItems[id] ? (
+          <img
+            className="add"
+            onClick={() => addToCart(id)}
+            src={assets.add_icon_white}
+            alt=""
+          />
+        ) : (
+          <div className="pc-item-counter">
+            <img
+              onClick={() => removeFromCart(id)}
+              src={assets.remove_icon_red}
+              alt=""
+            />
             <p>{cartItems[id]}</p>
-            <img onClick={()=>addToCart(id)} src={assets.add_icon_green} alt="" />
+            <img
+              onClick={() => addToCart(id)}
+              src={assets.add_icon_green}
+              alt=""
+            />
           </div>
-        }
+        )}
       </div>
       <div className="pc-item-info">
         <div className="pc-item-name-rating">
@@ -29,7 +44,7 @@ const PcItem = ({id, name, description, price, image}) => {
         <p className="pc-item-price">${price}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PcItem
+export default PcItem;
