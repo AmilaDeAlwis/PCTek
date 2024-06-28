@@ -4,7 +4,7 @@ export const connectDB = async () => {
   try {
     // Connection string
     await mongoose.connect(
-      "mongodb+srv://amila:ygda2011@pctek.zybsihc.mongodb.net/pctek?retryWrites=true&w=majority&appName=pctek"
+      "mongodb+srv://USERNAME:PASSWORD@PROJECT_NAME.zybsihc.mongodb.net/PROJECT_NAME?retryWrites=true&w=majority&appName=PROJECT_NAME"
     );
     console.log("DB Connected");
   } catch (error) {
